@@ -16,7 +16,6 @@ $pkgname-$pkgver.tar.gz::https://github.com/neovim/neovim/archive/refs/tags/v$pk
 0002-cross-compile-libuv-probes.patch
 0003-disable-luajit-bytecode-embedding.patch
 "
-builddir="$srcdir/$pkgname-$pkgver"
 options="!check strip"
 image="ghcr.io/toltec-dev/base:v4.0"
 
