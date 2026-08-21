@@ -1,0 +1,11 @@
+FROM ghcr.io/toltec-dev/base:v4.0
+
+# The target is the reMarkable 2's ARMv7 hard-float environment. LuaJIT's
+# cross-build additionally needs a 32-bit x86 host compiler for its generator.
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ccache gcc-multilib gettext luajit qemu-user \
+ && printf '%s\n' '#!/bin/sh' 'case "$1" in */gen_unicode_tables.lua) exec /usr/bin/luajit "$@" ;; esac' 'exec qemu-arm -L /opt/x-tools/arm-remarkable-linux-gnueabihf/arm-remarkable-linux-gnueabihf/sysroot "${ARM_LUAJIT:?ARM_LUAJIT must point to the target LuaJIT}" -joff "$@"' > /usr/local/bin/arm-luajit \
+ && printf '%s\n' '#!/bin/sh' 'exec qemu-arm -L /opt/x-tools/arm-remarkable-linux-gnueabihf/arm-remarkable-linux-gnueabihf/sysroot "${ARM_NVIM:?ARM_NVIM must point to the target Neovim}" "$@"' > /usr/local/bin/arm-nvim \
+ && chmod +x /usr/local/bin/arm-luajit \
+ && chmod +x /usr/local/bin/arm-nvim \
+ && rm -rf /var/lib/apt/lists/*

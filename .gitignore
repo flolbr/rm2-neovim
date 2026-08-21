@@ -1,0 +1,11 @@
+.private/
+.agents/
+.codex/
+.ccache/
+.nvimlog
+build/
+dist/
+neovim-0.12.4-src/
+neovim-rm2-0.12.4/
+neovim-rm2-v0.12.4-armv7.tar.gz
+build-*.log
