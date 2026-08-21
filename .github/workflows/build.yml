@@ -39,6 +39,6 @@ jobs:
         with:
           name: neovim-rm2-armv7
           path: release
-      - run: gh release create "$GITHUB_REF_NAME" release/*.tar.gz --title "Neovim $GITHUB_REF_NAME for reMarkable 2" --generate-notes
+      - run: gh release create "$GITHUB_REF_NAME" release/*.tar.gz --repo "$GITHUB_REPOSITORY" --title "Neovim $GITHUB_REF_NAME for reMarkable 2" --generate-notes
         env:
           GH_TOKEN: ${{ github.token }}
