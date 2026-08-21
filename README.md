@@ -25,6 +25,16 @@ The prepared Vellum recipe is in `packaging/vellum/neovim/`. It builds the same
 source and patches as an `armv7` package for reMarkable 2, installing `nvim`
 under Vellum's managed prefix.
 
+`patches/` is the canonical patch set. Before a Vellum submission, verify that
+the recipe copies and SHA-512 entries match it:
+
+```sh
+./scripts/sync-vellum-patches.sh --check
+```
+
+Use `--sync` after changing a canonical patch to refresh the Vellum copies and
+their checksums.
+
 ## Install on a reMarkable 2
 
 Download the archive for the release you want on a computer with SSH access to
