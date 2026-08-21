@@ -19,6 +19,12 @@ GitHub Actions runs the same build and publishes the archive as a workflow
 artifact. Pushing a version tag such as `v0.12.4` also creates a GitHub Release
 and attaches the archive.
 
+## Vellum package
+
+The prepared Vellum recipe is in `packaging/vellum/neovim/`. It builds the same
+source and patches as an `armv7` package for reMarkable 2, installing `nvim`
+under Vellum's managed prefix.
+
 ## Install on a reMarkable 2
 
 Download the archive for the release you want on a computer with SSH access to
